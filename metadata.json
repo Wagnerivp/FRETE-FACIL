@@ -1,0 +1,6 @@
+{
+  "name": "Frete Fácil",
+  "description": "Calculadora de orçamentos de frete com base em distância de rota via Google Maps.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import "tailwindcss";
+
+gmp-place-autocomplete {
+  width: 100%;
+  height: 100%;
+}
+
+gmp-place-autocomplete::part(input) {
+  color: #1e293b !important;
+  background: white !important;
+  background-color: white !important;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  padding: 0;
+  padding-left: 10px;
+}
+
+gmp-place-autocomplete::part(input):focus {
+  outline: none;
+}
+
+gmp-place-autocomplete::part(search-icon) {
+  display: none;
+}
+
+gmp-place-autocomplete::part(clear-button) {
+  opacity: 0.7;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
