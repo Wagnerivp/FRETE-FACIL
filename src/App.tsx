@@ -349,15 +349,22 @@ function FreightCalculator() {
         {isCalculated && (
           <div id="results-section" className="bg-white/95 text-slate-900 rounded-[24px] p-6 md:p-8 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] animate-in fade-in slide-in-from-bottom-4 duration-500 w-full shrink-0">
              
-             <div className="flex flex-col md:flex-row justify-center items-center border-b border-slate-200 pb-4 mb-5 gap-4 text-center">
+             <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-slate-200 pb-4 mb-5 gap-4">
                 <div>
                    <span className="text-[13px] text-slate-500 tracking-wide block mb-1">Valor Total Estimado</span>
                    <div className="text-4xl md:text-[42px] font-bold text-slate-900 leading-none">R$ {totalCost.toFixed(2).replace('.', ',')}</div>
+                </div>
+                <div className="md:text-right">
+                   <span className="text-[13px] text-slate-500 tracking-wide block mb-1">Distância Total (I/V)</span>
+                   <div className="text-[16px] font-semibold text-slate-800">{distanceRoundTripKm.toFixed(1).replace('.', ',')} km</div>
                 </div>
              </div>
 
              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 mb-4">
                 <div>
+                   <div className="text-[13px] text-slate-500">Deslocamento</div>
+                   <div className="text-[16px] font-semibold text-slate-800 mb-3">R$ {(travelCost + BASE_FEE).toFixed(2).replace('.', ',')}</div>
+                   
                    <div className="text-[13px] text-slate-500">Mão de Obra ({helpers} ajudantes)</div>
                    <div className="text-[16px] font-semibold text-slate-800 mb-3">R$ {helpersBaseCost.toFixed(2).replace('.', ',')}</div>
                 </div>
