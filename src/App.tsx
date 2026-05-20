@@ -204,14 +204,27 @@ function FreightCalculator() {
 
   // Business Logic Constants
   const BASE_FEE = 80;
-  const PER_KM_FEE = 6;
   const HELPER_FEE = 70;
   const STAIR_FEE_PER_HELPER_PER_FLOOR = 10;
 
   // Calculables
   const distanceKm = distanceMeters ? (distanceMeters / 1000) : 0;
   const distanceRoundTripKm = distanceKm * 2;
-  const travelCost = distanceRoundTripKm * PER_KM_FEE;
+  
+  let currentPerKmFee = 12;
+  if (distanceRoundTripKm > 200) {
+    currentPerKmFee = 5;
+  } else if (distanceRoundTripKm > 60) {
+    currentPerKmFee = 6;
+  } else if (distanceRoundTripKm > 30) {
+    currentPerKmFee = 7;
+  } else if (distanceRoundTripKm > 20) {
+    currentPerKmFee = 9;
+  } else {
+    currentPerKmFee = 12;
+  }
+  
+  const travelCost = distanceRoundTripKm * currentPerKmFee;
   
   const helpersBaseCost = helpers * HELPER_FEE;
   const totalFloors = floors;
