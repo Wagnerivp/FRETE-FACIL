@@ -211,14 +211,15 @@ function FreightCalculator() {
   const distanceKm = distanceMeters ? (distanceMeters / 1000) : 0;
   const distanceRoundTripKm = distanceKm * 2;
   
+  // Tiers based on ONE-WAY distance (ida), rate applied to ROUND-TRIP distance (ida/volta)
   let currentPerKmFee = 12;
-  if (distanceRoundTripKm > 200) {
+  if (distanceKm > 200) {
     currentPerKmFee = 5;
-  } else if (distanceRoundTripKm > 60) {
+  } else if (distanceKm > 60) {
     currentPerKmFee = 6;
-  } else if (distanceRoundTripKm > 30) {
+  } else if (distanceKm > 30) {
     currentPerKmFee = 7;
-  } else if (distanceRoundTripKm > 20) {
+  } else if (distanceKm > 20) {
     currentPerKmFee = 9;
   } else {
     currentPerKmFee = 12;
