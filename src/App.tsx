@@ -412,6 +412,7 @@ function FreightCalculator() {
           </div>
         )}
       </main>
+      <div className="absolute bottom-2 right-2 text-[10px] text-white/30 font-mono">v1.2</div>
     </div>
   );
 }
