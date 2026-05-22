@@ -211,15 +211,15 @@ function FreightCalculator() {
   const distanceKm = distanceMeters ? (distanceMeters / 1000) : 0;
   const distanceRoundTripKm = distanceKm * 2;
   
-  // Tiers based on ONE-WAY distance (ida), rate applied to ROUND-TRIP distance (ida/volta)
+  // Tiers based on ROUND-TRIP distance (ida/volta), rate applied to ROUND-TRIP distance (ida/volta)
   let currentPerKmFee = 12;
-  if (distanceKm > 200) {
+  if (distanceRoundTripKm > 200) {
     currentPerKmFee = 5;
-  } else if (distanceKm > 60) {
+  } else if (distanceRoundTripKm > 60) {
     currentPerKmFee = 6;
-  } else if (distanceKm > 30) {
+  } else if (distanceRoundTripKm > 30) {
     currentPerKmFee = 7;
-  } else if (distanceKm > 20) {
+  } else if (distanceRoundTripKm > 20) {
     currentPerKmFee = 9;
   } else {
     currentPerKmFee = 12;
@@ -238,6 +238,7 @@ function FreightCalculator() {
     if (origin && destination && distanceMeters !== null) {
       setIsCalculated(true);
       // Ensure smooth scroll to results works reliably on mobile
+      // A longer timeout helps if the mobile keyboard is still closing
       setTimeout(() => {
          const el = document.getElementById('results-section');
          if (el) {
@@ -245,7 +246,7 @@ function FreightCalculator() {
          } else {
            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
          }
-      }, 150);
+      }, 300);
     }
   };
 
