@@ -235,12 +235,17 @@ function FreightCalculator() {
   const totalCost = BASE_FEE + travelCost + helpersTotalCost;
 
   const handleCalculate = () => {
-    if (origin && destination && distanceMeters) {
+    if (origin && destination && distanceMeters !== null) {
       setIsCalculated(true);
-      // Smooth scroll to results
+      // Ensure smooth scroll to results works reliably on mobile
       setTimeout(() => {
-         document.getElementById('results-section')?.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+         const el = document.getElementById('results-section');
+         if (el) {
+           el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+         } else {
+           window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+         }
+      }, 150);
     }
   };
 
